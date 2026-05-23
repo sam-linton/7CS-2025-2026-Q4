@@ -1,0 +1,131 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+.mode-bar {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+    padding: 10px 0;
+}
+
+.mode-bar button {
+    min-width: 120px;
+}
+
+.quizzes {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+}
+
+h1 {
+    font-size: x-large;
+    font-family: "Proxima Nova", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    background-color: bisque;
+}
+
+p {
+    font-size: large;
+    font-family: "Proxima Nova", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 400;
+}
+
+button {
+    padding: 10px 20px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    margin: 5px;
+}
+
+#startpeppapigquiz {
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 700;
+
+    color: rgb(230, 141, 195);
+    background-color: rgb(28, 117, 188);
+    font-size: 20px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 0px;
+}
+
+#startluckquiz {
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 700;
+
+    color: gold;
+    background-color: purple;
+    font-size: 20px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 0px;
+}
+
+
+
+.dark-mode {
+    background-color: black;
+    color: white;
+}
+
+.dark-mode #startpeppapigquiz {
+    color: black;
+    background-color: white;
+}
+
+.light-mode {
+    background-color: white;
+    color: black;
+}
+
+.barbie-mode {
+    background-color: rgb(255, 192, 203);
+    color: rgb(155, 0, 89);
+    font-family: "Pacifico";
+}
+
+.barbie-mode * {
+    font-family: "Pacifico" !important;
+}
+
+.barbie-mode button {
+    color: rgb(155, 0, 89);
+    background-color: rgb(255, 240, 245);
+    font-family: "Pacifico";
+}
+
+.piggy-mode {
+    background-color: rgb(28, 117, 188);
+    color: rgb(230, 141, 195);
+}
+
+.piggy-mode h1 {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.piggy-mode h2 {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.piggy-mode button {
+    background-color: rgb(230, 141, 195);
+}
+
+.piggy-mode #startpeppapigquiz {
+    color: black;
+    background-color: rgb(230, 141, 195);
+}
+
+#quiz {
+    display: none;
+}
+
+.question {
+    margin-bottom: 30px;
+}

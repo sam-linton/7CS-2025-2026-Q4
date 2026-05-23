@@ -1,0 +1,89 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sirius's Escalator Facts</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to right, #4facfe, #00f2fe);
+      text-align: center;
+      color: white;
+      padding: 40px;
+    }
+
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+    }
+
+    .button-container {
+      margin: 20px 0;
+    }
+
+    button {
+      background-color: white;
+      color: #0077cc;
+      border: none;
+      padding: 15px 25px;
+      margin: 10px;
+      font-size: 1rem;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background-color: #0077cc;
+      color: white;
+      transform: scale(1.05);
+    }
+
+    #fact-box {
+      margin-top: 30px;
+      background: rgba(255,255,255,0.2);
+      padding: 25px;
+      border-radius: 15px;
+      font-size: 1.3rem;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🛗 Escalator Facts</h1>
+
+  <div class="button-container">
+    <button onclick="showFact(0)">Fact 1</button>
+    <button onclick="showFact(1)">Fact 2</button>
+    <button onclick="showFact(2)">Fact 3</button>
+    <button onclick="showFact(3)">Fact 4</button>
+    <button onclick="showFact(4)">Fact 5</button>
+  </div>
+
+  <div id="fact-box">
+    Click a button to learn an escalator fact!
+  </div>
+
+  <script>
+    const facts = [
+      "The first working escalator was installed at Coney Island in 1896.",
+      "Escalators can move about 9,000 people per hour.",
+      "The word 'escalator' was originally a trademark name.",
+      "Some escalators in subway systems are over 100 feet long.",
+      "Escalators use a motor-driven chain system to move the steps."
+    ];
+
+    function showFact(index) {
+      document.getElementById("fact-box").innerText = facts[index];
+    }
+  </script>
+
+</body>
+</html>
+```

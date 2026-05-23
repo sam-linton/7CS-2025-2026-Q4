@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Luck Quiz</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+
+    <script src="script.js" defer></script>
+</head>
+
+<body id="body">
+
+    <div class="mode-bar">
+        <button onclick="lightMode()">Normal Mode</button>
+        <button onclick="darkMode()">Darkish Mode</button>
+        <button onclick="barbieMode()">Barbie Mode</button>
+        <button onclick="piggyMode()">PIGGY Mode</button>
+    </div>
+
+    <h1 class="main-title">Are you lucky? Take this test!</h1>
+
+    <h2 id="score">Score: 0</h2>
+
+    <div class="question">
+
+        <h2>Question 1</h2>
+        <p>67</p>
+
+        <button onclick="checkAnswer(this, true)">A.</button>
+        <button onclick="checkAnswer(this, false)">B.</button>
+        <button onclick="checkAnswer(this, false)">C.</button>
+        <button onclick="checkAnswer(this, false)">D.</button>
+
+        <p class="result"></p>
+
+    </div>
+
+    <div class="question">
+
+        <h2>Question 2</h2>
+        <p>Camel?</p>
+
+        <button onclick="checkAnswer(this, false)">Email</button>
+        <button onclick="checkAnswer(this, true)">George</button>
+        <button onclick="checkAnswer(this, false)">bucket</button>
+        <button onclick="checkAnswer(this, false)">Gerald</button>
+
+        <p class="result"></p>
+
+    </div>
+
+    <div class="question">
+
+        <h2>Question 3</h2>
+        <p>Sunny?</p>
+
+        <button onclick="checkAnswer(this, false)">Three</button>
+        <button onclick="checkAnswer(this, false)">six seven?</button>
+        <button onclick="checkAnswer(this, false)">Jeremy</button>
+        <button onclick="checkAnswer(this, true)">Buckle</button>
+
+        <p class="result"></p>
+
+    </div>
+
+    <div class="question">
+
+        <h2>Question 4</h2>
+        <p>Purple ladder?</p>
+
+        <button onclick="checkAnswer(this, false)">Window</button>
+        <button onclick="checkAnswer(this, true)">Soup</button>
+        <button onclick="checkAnswer(this, false)">Thursday</button>
+        <button onclick="checkAnswer(this, false)">Pencil</button>
+
+        <p class="result"></p>
+
+    </div>
+
+    <div class="question">
+
+        <h2>Question 5</h2>
+        <p>14 bananas = ?</p>
+
+        <button onclick="checkAnswer(this, false)">Ocean</button>
+        <button onclick="checkAnswer(this, false)">Chair</button>
+        <button onclick="checkAnswer(this, true)">Lamp</button>
+        <button onclick="checkAnswer(this, false)">Triangle</button>
+
+        <p class="result"></p>
+
+    </div>
+
+    <div class="question">
+
+        <h2>Question 6</h2>
+        <p>Moon sandwich?</p>
+
+        <button onclick="checkAnswer(this, false)">Yellow</button>
+        <button onclick="checkAnswer(this, false)">Mango</button>
+        <button onclick="checkAnswer(this, false)">Train</button>
+        <button onclick="checkAnswer(this, true)">Pebble</button>
+
+        <p class="result"></p>
+
+    </div>
+
+    <div class="question">
+
+        <h2>Question 7</h2>
+        <p>Cloud engine?</p>
+
+        <button onclick="checkAnswer(this, false)">Button</button>
+        <button onclick="checkAnswer(this, false)">Seven</button>
+        <button onclick="checkAnswer(this, false)">Ice cream</button>
+        <button onclick="checkAnswer(this, true)">Notebook</button>
+
+        <p class="result"></p>
+
+    </div>
+
+    <div class="question">
+
+        <h2>Question 8</h2>
+        <p>Waffle tornado?</p>
+
+        <button onclick="checkAnswer(this, false)">Door</button>
+        <button onclick="checkAnswer(this, false)">Marble</button>
+        <button onclick="checkAnswer(this, true)">Cloud</button>
+        <button onclick="checkAnswer(this, false)">Orange</button>
+
+        <p class="result"></p>
+
+    </div>
+
+</body>
+
+</html>

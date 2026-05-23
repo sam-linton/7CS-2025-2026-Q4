@@ -1,0 +1,31 @@
+Create style.css
+
+body {
+    font-family: Arial;
+    background-color: #2409f5;
+    margin: 0;
+}
+
+header {
+    background-color: #8cf358;
+    padding: 15px;
+    text-align: center;
+}
+
+nav a {
+    margin: 10px;
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+}
+
+section {
+    padding: 20px;
+    text-align: center;
+}
+
+footer {
+    background-color: #fa060e;
+    text-align: center;
+    padding: 10px;
+}

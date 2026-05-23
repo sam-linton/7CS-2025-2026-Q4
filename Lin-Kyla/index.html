@@ -1,0 +1,139 @@
+<html lang="en">
+
+<head>
+    <title>Music Hub</title>
+
+    <script src="script.js" defer></script>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body id="body">
+
+
+    <div id="titleScreen">
+
+        <h1 class="mainTitle">
+            Music Hub
+        </h1>
+
+        <button class="startButton" onclick="startApp()">
+            Start Now :)
+        </button>
+
+
+    </div>
+
+    <audio id="music">
+        <source src="Music Here" type="audio/mpeg">
+    </audio>
+
+    <div id="mainContent">
+
+
+        <div class="themeButtons">
+
+            <button class="rainbow" onclick="rainbow()">
+                Rainbow
+            </button>
+            
+            <button class="meadow" onclick="meadow()">
+                Meadow
+            </button>
+
+            <button class="forest" onclick="forest()">
+                Forest
+            </button>
+
+            <button class="beach" onclick="beach()">
+                Beach
+            </button>
+
+            <button class="normal" onclick="normal()">
+                Normal
+            </button>
+
+            <br>
+            <br>
+            <br>
+
+
+            <button class="stream" onclick="stream()">
+                Flowing Streams
+            </button>
+
+            <button class="rain" onclick="rain()">
+                Rainy Night
+            </button>
+
+            <button class="fire" onclick="fire()">
+                Crackling Fireplace
+            </button>
+
+            <button class="stop" onclick="stopMusic()">Stop Music</button>
+
+            <audio id="music" loop>
+                <source src="Music Here" type="audio/mpeg">
+            </audio>
+
+        </div>
+
+        <div class="timerSection">
+
+            <input type="number" id="minutesInput" placeholder="Minutes">
+
+            <br><br>
+
+            <button onclick="startTimer()">
+                Start
+            </button>
+
+            <button onclick="pauseTimer()">
+                Pause
+            </button>
+
+            <button onclick="clearTimer()">
+                Clear
+            </button>
+
+            <h2 id="timerDisplay">
+                00:00
+            </h2>
+
+        </div>
+        <div class="playlistButtons">
+
+            <button onclick="focusPlaylist()">
+                Focus
+            </button>
+
+            <button onclick="studyPlaylist()">
+                Study
+            </button>
+
+            <button onclick="sleepPlaylist()">
+                Sleep
+            </button>
+
+            <button onclick="lofiPlaylist()">
+                Lofi
+            </button>
+
+        </div>
+
+
+        <center>
+
+            <iframe id="spotifyPlayer" style="border-radius:12px"
+                src="https://open.spotify.com/embed/playlist/5iMPQNcuMfYlWNRNUllc2o?si=aff0dbebd8de4cae" width="400"
+                height="380" frameBorder="0" allowfullscreen=""
+                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture">
+            </iframe>
+
+        </center>
+
+    </div>
+
+</body>
+
+</html>

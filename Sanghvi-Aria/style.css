@@ -1,0 +1,254 @@
+body {
+    height: 100vh;
+    margin: 0;
+    font-family: 'Times New Roman', Times, serif;
+    overflow-y: hidden;
+    transition: background-image 0.8s ease;
+}
+
+#titleScreen {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.mainTitle {
+    font-size: 70px;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.startButton {
+    padding: 18px 35px;
+    font-size: 30px;
+    border-radius: 12px;
+    border: none;
+    cursor: pointer;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+button {
+    cursor: pointer;
+}
+
+
+#mainContent {
+    display: none;
+}
+
+.themeButtons {
+    margin: 20px;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.themeButtons button {
+    transition: all 0.3s ease;
+}
+
+.themeButtons button:hover {
+    transform: scale(1.08);
+    opacity: 0.8;
+}
+
+.playlistButtons {
+    text-align: center;
+    margin-top: 50px;
+    margin-bottom: 40px;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.playlistButtons button {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: rgb(0, 0, 0);
+    padding: 15px 25px;
+    margin: 10px;
+    font-size: 22px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.forest .playlistButtons button {
+    color: white;
+}
+
+.beach .playlistButtons button {
+    color: white;
+}
+
+.meadow .playlistButtons button {
+    color: white;
+}
+
+
+.forest {
+    background-color: rgb(190, 220, 197);
+    color: black;
+    font-family: 'Times New Roman', Times, serif;
+
+}
+
+.beach {
+    background-color: rgb(164, 222, 245);
+    color: black;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.meadow {
+    background-color: rgb(243, 244, 197);
+    color: black;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.rainbow{
+    background-color: rgb(240, 198, 231);
+    color: black;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.normal {
+    background-color: rgb(220, 217, 217);
+    color: black;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.stream {
+    background-color: rgb(176, 206, 223);
+    color: black;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+
+.rain {
+    background-color: rgb(160, 167, 200);
+    color: black;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.fire  {
+    background-color: rgb(236, 194, 168);
+    color: black;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.stop  {
+    background-color: rgb(184, 175, 175);
+    color: black;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.meadowBackground {
+    background-image: url("Meadow.jpg");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    img {
+        width: 100vw;
+        height: 100vh;
+        object-fit: cover;
+    }
+}
+
+.forestBackground {
+    background-image: url("Forest.jpg");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    img {
+        width: 100vw;
+        height: 100vh;
+        object-fit: cover;
+    }
+}
+
+.beachBackground {
+    background-image: url("Beach.jpg");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    img {
+        width: 100vw;
+        height: 100vh;
+        object-fit: cover;
+    }
+}
+
+.rainbowBackground{
+    background-image: url("Rainbow.jpg");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    img {
+        width: 100vw;
+        height: 100vh;
+        object-fit: cover;
+    }
+}
+
+.normalBackground {
+    background-color: rgb(231, 230, 230);
+    text-shadow: 0px 0px 10px black;
+}
+
+.treeBackground {
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    img {
+        width: 100vw;
+        height: 100vh;
+        object-fit: cover;
+    }
+}
+
+.timerSection {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 12px;
+    border-radius: 12px;
+    width: 140px;
+    text-align: center;
+    backdrop-filter: blur(5px);
+}
+
+.timerSection input {
+    width: 80px;
+    padding: 5px;
+    font-size: 14px;
+    border-radius: 6px;
+    border: none;
+}
+
+.timerSection button {
+    margin-top: 8px;
+    padding: 5px 10px;
+    font-size: 14px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+}
+
+#timerDisplay {
+    font-size: 28px;
+    color: white;
+    margin-top: 10px;
+    text-shadow: 0px 0px 10px black;
+}
+
+.playlistButtons button:hover {
+    transform: scale(1.08);
+    background: rgba(255, 255, 255, 0.25);
+}

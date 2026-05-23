@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Peppa Pig Quiz</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+
+    <script src="script.js" defer></script>
+</head>
+
+<body id="body">
+
+    <div class="mode-bar">
+        <button onclick="lightMode()">Normal Mode</button>
+        <button onclick="darkMode()">Darkish Mode</button>
+        <button onclick="barbieMode()">Barbie Mode</button>
+        <button onclick="piggyMode()">PIGGY Mode</button>
+    </div>
+
+    <h1 class="main-title">🐷 Peppa Pig Quiz! 🐷</h1>
+
+    <h2 id="score">Score: 0</h2>
+
+    <div class="question">
+
+        <h2>Question 1</h2>
+        <p>What animal is Peppa?</p>
+
+        <button onclick="checkAnswer(this, true)">Pig</button>
+        <button onclick="checkAnswer(this, false)">Dog</button>
+        <button onclick="checkAnswer(this, false)">Cat</button>
+        <button onclick="checkAnswer(this, false)">Rabbit</button>
+
+        <p class="result"></p>
+
+    </div>
+
+    <div class="question">
+
+        <h2>Question 2</h2>
+        <p>What is Peppa's brother called?</p>
+
+        <button onclick="checkAnswer(this, false)">Danny</button>
+        <button onclick="checkAnswer(this, true)">George</button>
+        <button onclick="checkAnswer(this, false)">Pedro</button>
+        <button onclick="checkAnswer(this, false)">Gerald</button>
+
+        <p class="result"></p>
+
+    </div>
+
+    <div class="question">
+
+        <h2>Question 3</h2>
+        <p>What color is Peppa's dress?</p>
+
+        <button onclick="checkAnswer(this, true)">Red</button>
+        <button onclick="checkAnswer(this, false)">Blue</button>
+        <button onclick="checkAnswer(this, false)">Green</button>
+        <button onclick="checkAnswer(this, false)">Yellow</button>
+
+        <p class="result"></p>
+
+    </div>
+
+    <div class="question">
+
+        <h2>Question 4</h2>
+        <p>What is Peppa's dad called?</p>
+
+        <button onclick="checkAnswer(this, false)">Daddy Dog</button>
+        <button onclick="checkAnswer(this, true)">Daddy Pig</button>
+        <button onclick="checkAnswer(this, false)">Daddy Rabbit</button>
+        <button onclick="checkAnswer(this, false)">Daddy Elephant</button>
+
+        <p class="result"></p>
+
+    </div>
+
+    <div class="question">
+
+        <h2>Question 5</h2>
+        <p>What is Peppa's mom called?</p>
+
+        <button onclick="checkAnswer(this, false)">Mummy Sheep</button>
+        <button onclick="checkAnswer(this, true)">Mummy Pig</button>
+        <button onclick="checkAnswer(this, false)">Mummy Rabbit</button>
+        <button onclick="checkAnswer(this, false)">Mummy Dog</button>
+
+        <p class="result"></p>
+
+    </div>
+
+    <div class="question">
+
+        <h2>Question 6</h2>
+        <p>Who is Peppa's best friend?</p>
+
+        <button onclick="checkAnswer(this, true)">Suzy Sheep</button>
+        <button onclick="checkAnswer(this, false)">Danny Dog</button>
+        <button onclick="checkAnswer(this, false)">Pedro Pony</button>
+        <button onclick="checkAnswer(this, false)">Rebecca Rabbit</button>
+
+        <p class="result"></p>
+
+    </div>
+
+    <div class="question">
+
+        <h2>Question 7</h2>
+        <p>What does Peppa love jumping in?</p>
+
+        <button onclick="checkAnswer(this, false)">Snow</button>
+        <button onclick="checkAnswer(this, true)">Muddy puddles</button>
+        <button onclick="checkAnswer(this, false)">Leaves</button>
+        <button onclick="checkAnswer(this, false)">Sand</button>
+
+        <p class="result"></p>
+
+    </div>
+
+    <div class="question">
+
+        <h2>Question 8</h2>
+        <p>What animal is Suzy?</p>
+
+        <button onclick="checkAnswer(this, false)">Dog</button>
+        <button onclick="checkAnswer(this, true)">Sheep</button>
+        <button onclick="checkAnswer(this, false)">Rabbit</button>
+        <button onclick="checkAnswer(this, false)">Cat</button>
+
+        <p class="result"></p>
+
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Guess Game</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="card">
+      <h1>Guess the Number</h1>
+
+      <input id="guessInput" type="number" placeholder="1 - 1000" />
+      <button id="guessButton">Guess</button>
+
+      <p id="result"></p>
+      <p id="attempts">Attempts: 0</p>
+    </div>
+
+    <script>
+      let secretNumber = Math.floor(Math.random() * 1000) + 1;
+      let attempts = 0;
+
+      const button = document.getElementById("guessButton");
+      const result = document.getElementById("result");
+      const input = document.getElementById("guessInput");
+      const attemptsText = document.getElementById("attempts");
+
+      button.addEventListener("click", () => {
+        const guess = Number(input.value);
+        attempts++;
+
+        attemptsText.textContent = "Attempts: " + attempts;
+
+        if (!guess || guess < 1 || guess > 1000) {
+          result.textContent = "Enter a number between 1 and 1000.";
+          return;
+        }
+
+        if (guess < secretNumber) {
+          result.textContent = "Too low!";
+        } else if (guess > secretNumber) {
+          result.textContent = "Too high!";
+        } else {
+          result.textContent =
+            "Correct! You got it in " + attempts + " guesses!";
+          secretNumber = Math.floor(Math.random() * 1000) + 1;
+          attempts = 0;
+          attemptsText.textContent = "Attempts: 0";
+        }
+
+        input.value = "";
+      });
+    </script>
+  </body>
+</html>

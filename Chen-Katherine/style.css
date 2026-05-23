@@ -1,0 +1,96 @@
+body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #010108;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+.clock {
+  width: 700px;
+  height: 700px;
+  border: 10px solid white;
+  border-radius: 50%;
+  position: relative;
+  background: #f7f7fa;
+  box-shadow: 0 0 20px rgba(0,0,0,0.5);
+}
+
+.number {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  color: rgb(16, 1, 1);
+  font-size: 24px;
+  font-weight: 100;
+}
+
+.number1  { transform: rotate(30deg); }
+.number2  { transform: rotate(60deg); }
+.number3  { transform: rotate(90deg); }
+.number4  { transform: rotate(120deg); }
+.number5  { transform: rotate(150deg); }
+.number6  { transform: rotate(180deg); }
+.number7  { transform: rotate(210deg); }
+.number8  { transform: rotate(240deg); }
+.number9  { transform: rotate(270deg); }
+.number10 { transform: rotate(300deg); }
+.number11 { transform: rotate(330deg); }
+
+.number span {
+  display: flow-root;
+  transform: rotate(calc(-1 * var(--rotate)));
+  margin-top: 10px;}
+
+.number1 span  { --rotate: 30deg; }
+.number2 span  { --rotate: 60deg; }
+.number3 span  { --rotate: 90deg; }
+.number4 span  { --rotate: 120deg; }
+.number5 span  { --rotate: 150deg; }
+.number6 span  { --rotate: 180deg; }
+.number7 span  { --rotate: 210deg; }
+.number8 span  { --rotate: 240deg; }
+.number9 span  { --rotate: 270deg; }
+.number10 span { --rotate: 300deg; }
+.number11 span { --rotate: 330deg; }
+
+.hand {
+  position: absolute;
+  bottom: 50%;
+  left: 50%;
+  transform-origin: bottom;
+  transform: translateX(-50%) rotate(0deg);
+  border-radius: 10px;
+}
+
+.hour {
+  width: 8px;
+  height: 100px;
+  background: rgb(11, 10, 10);
+}
+
+.minute {
+  width: 6px;
+  height: 180px;
+  background: rgb(3, 8, 9);
+}
+
+.second {
+  width: 3px;
+  height: 200px;
+  background: red;
+}
+
+.center-dot {
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  background: white;
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

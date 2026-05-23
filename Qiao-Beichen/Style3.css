@@ -1,0 +1,46 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 1rem;
+}
+
+h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    text-align: center;
+    letter-spacing: 0.2rem;
+    text-shadow: 2px 2px 2px darkgrey;
+}
+
+.card img {
+    width: 100%;
+}
+
+.card {
+    background-color: antiquewhite;
+    padding: 0.5rem;
+    box-shadow: 5px 5px 5px gray;
+    height: 100%;
+    border-color: darkslategrey;
+    border-width: 0.25rem;
+
+    h1 {
+        text-align: left;
+        font-size: 2rem;
+        letter-spacing: normal;
+        padding-top: 0.5rem;
+    /* Comes later, overrides the other h1 */
+    }
+}
+
+.gallery {
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 1rem;
+    align-items: end;
+    width: 100%;
+}

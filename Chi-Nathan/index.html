@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>FIGHT NIGHT</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="game-container">
+
+    <!-- ========== MENU ========== -->
+    <div id="menu">
+      <div class="menu-title">FIGHT NIGHT</div>
+
+      <div class="menu-section">
+        <div class="menu-label">GAME MODE</div>
+        <div id="mode-row" class="difficulty-row">
+          <button class="diff-btn selected" data-mode="versus">VERSUS</button>
+          <button class="diff-btn" data-mode="tournament">TOURNAMENT</button>
+          <button class="diff-btn" data-mode="tower">TOWER</button>
+          <button class="diff-btn" data-mode="online">ONLINE</button>
+        </div>
+      </div>
+
+      <div class="menu-section">
+        <div class="menu-label">CHOOSE YOUR FIGHTER</div>
+        <div id="player-roster" class="roster"></div>
+      </div>
+
+      <div class="menu-section" id="opponent-section">
+        <div class="menu-label">CHOOSE OPPONENT</div>
+        <div id="opponent-roster" class="roster"></div>
+      </div>
+
+      <div class="menu-section hidden" id="online-section">
+        <div class="menu-label">NETWORK</div>
+        <div id="net-pick-role" class="difficulty-row">
+          <button class="diff-btn" id="net-host-btn">HOST GAME</button>
+          <button class="diff-btn" id="net-join-btn">JOIN GAME</button>
+        </div>
+
+        <div id="net-host-flow" class="net-flow hidden">
+          <div class="net-step">
+            <div class="net-step-label">1. SEND THIS CODE TO YOUR FRIEND</div>
+            <textarea id="net-host-offer" class="net-code" readonly placeholder="Generating..."></textarea>
+            <button class="net-btn" id="net-copy-offer">COPY</button>
+          </div>
+          <div class="net-step">
+            <div class="net-step-label">2. PASTE THEIR RESPONSE CODE BELOW</div>
+            <textarea id="net-host-answer" class="net-code" placeholder="Paste friend's response code here"></textarea>
+            <button class="net-btn" id="net-host-connect">CONNECT</button>
+          </div>
+        </div>
+
+        <div id="net-join-flow" class="net-flow hidden">
+          <div class="net-step">
+            <div class="net-step-label">1. PASTE HOST'S CODE BELOW</div>
+            <textarea id="net-join-offer" class="net-code" placeholder="Paste host's code here"></textarea>
+            <button class="net-btn" id="net-join-generate">GENERATE RESPONSE</button>
+          </div>
+          <div class="net-step">
+            <div class="net-step-label">2. SEND THIS RESPONSE CODE BACK</div>
+            <textarea id="net-join-answer" class="net-code" readonly placeholder="Will appear after step 1"></textarea>
+            <button class="net-btn" id="net-copy-answer">COPY</button>
+          </div>
+        </div>
+
+        <div id="net-status" class="net-status">Not connected.</div>
+      </div>
+
+      <div class="menu-section">
+        <div class="menu-label">DIFFICULTY</div>
+        <div id="difficulty-row" class="difficulty-row">
+          <button class="diff-btn" data-diff="easy">EASY</button>
+          <button class="diff-btn selected" data-diff="normal">NORMAL</button>
+          <button class="diff-btn" data-diff="hard">HARD</button>
+          <button class="diff-btn" data-diff="impossible">IMPOSSIBLE</button>
+        </div>
+      </div>
+
+      <div class="menu-section" id="settings-section">
+        <button id="settings-toggle" class="settings-toggle">&#9881; SETTINGS</button>
+        <div id="settings-panel" class="hidden">
+          <div class="settings-row">
+            <div class="settings-label">SCREEN SHAKE</div>
+            <input id="setting-shake" class="settings-slider" type="range" min="0" max="100" step="5" value="100" />
+            <div class="settings-value" id="setting-shake-val">100%</div>
+          </div>
+
+          <div class="settings-row">
+            <div class="settings-label">PARTICLES</div>
+            <div class="settings-btn-group" id="setting-particles">
+              <button class="settings-btn" data-particles="off">OFF</button>
+              <button class="settings-btn" data-particles="low">LOW</button>
+              <button class="settings-btn selected" data-particles="full">FULL</button>
+            </div>
+          </div>
+
+          <div class="settings-row">
+            <div class="settings-label">CONTROLS HINT</div>
+            <div class="settings-btn-group" id="setting-hint">
+              <button class="settings-btn selected" data-hint="show">SHOW</button>
+              <button class="settings-btn" data-hint="hide">HIDE</button>
+            </div>
+          </div>
+
+          <div class="settings-row">
+            <div class="settings-label">FAST MODE</div>
+            <div class="settings-btn-group" id="setting-fast">
+              <button class="settings-btn selected" data-fast="off">OFF</button>
+              <button class="settings-btn" data-fast="on">ON</button>
+            </div>
+            <div class="settings-hint">Reduces visual effects for smoother frame rates on slower devices.</div>
+          </div>
+
+          <div class="settings-row">
+            <div class="settings-label">KEY BINDINGS</div>
+            <div class="settings-keybind-group" id="setting-keybinds">
+              <button class="settings-keybind" data-action="punch">PUNCH: <span>J</span></button>
+              <button class="settings-keybind" data-action="parry">PARRY: <span>K</span></button>
+              <button class="settings-keybind" data-action="special">SPECIAL: <span>I</span></button>
+              <button class="settings-keybind" data-action="ult">ULT: <span>U</span></button>
+              <button class="settings-keybind" data-action="dash">DASH: <span>Q</span></button>
+              <button class="settings-keybind" data-action="taunt">TAUNT: <span>SPACE</span></button>
+            </div>
+            <button class="settings-reset-btn" id="setting-keys-reset">RESET TO DEFAULTS</button>
+          </div>
+
+          <div class="settings-row">
+            <div class="settings-label">SECRETS</div>
+            <button class="settings-reset-btn" id="setting-reset-gojo">RESET VOID UNLOCK</button>
+          </div>
+        </div>
+      </div>
+
+      <div id="selected-summary"></div>
+
+      <button id="start-btn">START FIGHT</button>
+    </div>
+
+    <!-- ========== FIGHT VIEW ========== -->
+    <div id="fight-view" class="hidden">
+      <div id="hud">
+        <div class="health-wrap left">
+          <div id="player-name" class="name-tag">YOU</div>
+          <div class="bar-row">
+            <span class="bar-icon heart">&#9829;</span>
+            <div class="health-bar"><div id="player-health" class="health-fill"></div></div>
+          </div>
+          <div class="bar-row">
+            <span class="bar-icon energy">&#9889;</span>
+            <div class="special-bar"><div id="player-special" class="special-fill"></div></div>
+          </div>
+          <div class="bar-row">
+            <span class="bar-icon ult">&#10026;</span>
+            <div class="ult-bar"><div id="player-ult" class="ult-fill"></div></div>
+          </div>
+        </div>
+        <div id="round-info">
+          <div id="round-text">ROUND 1</div>
+          <div id="timer">99</div>
+          <div id="difficulty-label"></div>
+          <div id="tourney-label"></div>
+        </div>
+        <div class="health-wrap right">
+          <div id="opponent-name" class="name-tag">OPPONENT</div>
+          <div class="bar-row reverse">
+            <div class="health-bar"><div id="lebron-health" class="health-fill"></div></div>
+            <span class="bar-icon heart">&#9829;</span>
+          </div>
+          <div class="bar-row reverse">
+            <div class="special-bar"><div id="opponent-special" class="special-fill"></div></div>
+            <span class="bar-icon energy">&#9889;</span>
+          </div>
+          <div class="bar-row reverse">
+            <div class="ult-bar"><div id="opponent-ult" class="ult-fill"></div></div>
+            <span class="bar-icon ult">&#10026;</span>
+          </div>
+        </div>
+      </div>
+
+      <div id="screen">
+        <canvas id="game" width="960" height="540"></canvas>
+
+        <div id="overlay" class="hidden">
+          <div id="overlay-title">FIGHT!</div>
+          <div id="overlay-sub">Press SPACE to start</div>
+        </div>
+      </div>
+
+      <div id="controls">
+        <span><b>A</b><b>D</b><i>move</i></span>
+        <span><b>W</b><i>jump</i></span>
+        <span><b>W</b><b>W</b><i>double jump</i></span>
+        <span><b>Q</b><i>dash (air OK)</i></span>
+        <span><b>J</b><i>punch</i></span>
+        <span><b>J</b><i>hold = heavy</i></span>
+        <span><b>K</b><i>parry</i></span>
+        <span><b>I</b><i>special</i></span>
+        <span><b>U</b><i>ultimate</i></span>
+        <span><b>SPACE</b><i>taunt</i></span>
+        <span><b>ESC</b><i>menu</i></span>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="game.js"></script>
+</body>
+</html>

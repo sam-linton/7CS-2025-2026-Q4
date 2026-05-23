@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The 24 Game</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<div class="wrapper">
+
+  <header>
+    <h1>24</h1>
+    <p>Enter four numbers &mdash; reach the target using + &minus; &times; &divide;</p>
+  </header>
+
+  <div class="card">
+    <div class="section-label">Your Four Numbers</div>
+    <div class="inputs-row">
+      <input class="num-input" id="n1" type="number" min="1" max="99" placeholder="?" />
+      <input class="num-input" id="n2" type="number" min="1" max="99" placeholder="?" />
+      <input class="num-input" id="n3" type="number" min="1" max="99" placeholder="?" />
+      <input class="num-input" id="n4" type="number" min="1" max="99" placeholder="?" />
+    </div>
+    <button class="btn" onclick="solve()">SOLVE</button>
+    <button class="btn btn-secondary" onclick="randomNumbers()">Random Numbers</button>
+  </div>
+
+  <div class="loader" id="loader">COMPUTING...</div>
+
+  <div class="card" id="result-card">
+    <div class="section-label">Solutions</div>
+    <div class="result-status" id="result-status"></div>
+    <ul class="solution-list" id="solution-list"></ul>
+    <div class="more-count" id="more-count"></div>
+  </div>
+
+  <div class="card">
+    <div class="section-label">How It Works</div>
+    <div class="rules-grid">
+      <div><span>Goal:</span> Make 24 using all 4 numbers exactly once.</div>
+      <div><span>Ops:</span> Addition, subtraction, multiplication, division.</div>
+      <div><span>Order:</span> Any order and grouping with parentheses is allowed.</div>
+      <div><span>Range:</span> Any whole numbers work, classic game uses 1&ndash;13.</div>
+    </div>
+  </div>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,117 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border;
+}
+
+
+#cart {
+    color: purple;
+    padding: 1.5rem;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    background-color: rgb(233, 212, 186);
+    width: 1rem;
+    box-shadow: 2px 2px 6px rgb(176, 113, 31);
+    border-radius: 0.5rem;
+    text-align: center;
+
+    
+
+}
+
+body {
+    font-family: 'Times New Roman', Times, serif;
+    background-color: burlywood;
+
+}
+
+img {
+    width: 12rem;
+    object-fit: cover;
+
+}
+
+
+h1 {
+    text-align: center;
+    font-family: 'Times New Roman', Times, serif;
+    color: chocolate;
+    text-shadow: 2px 2px 2px rgb(70, 34, 5);
+
+}
+
+
+.card {
+    padding: 3rem;
+    background-color: rgb(233, 212, 186);
+    width: 12rem;
+    padding: 0.5rem;
+    box-shadow: 2px 2px 6px rgb(176, 113, 31);
+    border-radius: 0.5rem;
+
+    .store {
+        height: 10rem;
+
+        img {
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+        }
+
+        p {
+            display: none;
+            font-size: x-large;
+
+        }
+
+        &:hover {
+            img {
+                display: none;
+            }
+
+            p {
+                display: block;
+            }
+
+        }
+    }
+
+    h1 {
+        text-align: center;
+        font-family: 'Times New Roman', Times, serif;
+        color: chocolate;
+        text-shadow: 2px 2px 4px rgb(139, 68, 17)
+    }
+
+    p {
+        text-align: center;
+        color: purple;
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        font-size: medium;
+
+    }
+}
+
+button {
+    width: 100%;
+    border-style: none;
+    color: aliceblue;
+    background-color: rgb(204, 110, 38);
+    padding: 0.25rem;
+    font-size: 1rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+}
+
+.gallery {
+    display: flex;
+    gap: 0.6rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: start;
+
+}
+
+button:hover {
+    background-color: purple;
+}

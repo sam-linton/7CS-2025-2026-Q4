@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        /* Styling the clock display */
+        #clock {
+            font-family: 'Arial', sans-serif;
+            font-size: 130px;
+            font-weight: bold;
+            color: #eff5df;
+            text-align: center;
+            background-color: #99e1d9;
+        }
+    </style>
+</head>
+
+<body onload="startTime()">
+
+    <div id="clock"></div>
+
+    <script>
+        function startTime() {
+            const today = new Date();
+            let h = today.getHours();
+            let m = today.getMinutes();
+            let s = today.getSeconds();
+
+            // Add a leading zero to numbers less than 10
+            m = checkTime(m);
+            s = checkTime(s);
+
+            document.getElementById('clock').innerHTML = h + ":" + m + ":" + s;
+
+            // Update the clock every 1000ms (1 second)
+            setTimeout(startTime, 1000);
+        }
+
+        function checkTime(i) {
+            if (i < 10) { i = "0" + i };
+            return i;
+        }
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,61 @@
+.navbar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: lightblue;
+    gap: 3rem;
+
+    a {
+        text-decoration: none;
+        color: black;
+        font-weight: bold;
+
+        &:hover {
+            color: darkblue;
+            text-decoration: underline;
+        }
+    }
+}
+
+
+.card {
+    margin-top: 0.5rem;
+    background-color: lightskyblue;
+    width: 15rem;
+    padding: 0.5rem;
+    border-radius: 8px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+
+    button {
+        background-color: lightpink;
+        color: white;
+        border: 1px solid lightcoral;
+        width: 15rem;
+        border-radius: 8px;
+        padding: 5px 10px;
+        cursor: pointer;
+        font-family: 'Times New Roman', Times, serif;
+    }
+
+    h1 {
+        font-family: 'Times New Roman', Times, serif;
+        color: navy;
+        margin-top: 0.5rem;
+    }
+}
+
+img {
+    width: 15rem;
+    border-radius: 8px;
+}
+
+.gallery {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+body {
+    background-color: lavender;
+}

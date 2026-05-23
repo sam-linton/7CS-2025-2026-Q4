@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <script src='script.js' defer></script>
+</head>
+
+<body>
+    <div class="clock">
+        <h1>Clock</h1>
+        <div class="date">
+            <h2>
+                Date:
+            </h2>
+            <p id="month">1</p>
+            <p id="day">1</p>
+            <p id="year">2026</p>
+
+            <input type="text" id="setMonth" placeholder="Set Month (#)">
+            <button id="set-Month" onclick = "setMonth()">Set Month</button>
+
+            <input type="text" id="setDay" placeholder="Set Day (#)">
+            <button id="set-Day" onclick = "setDay()">Set Day</button>
+                
+            <input type="text" id="setYear" placeholder="Set Year (#)">
+            <button id="set-Year" onclick = "setYear()">Set Year</button>
+            
+        </div>
+        <div class="time">
+            <h2>
+                Time:
+            </h2>
+            <p id="hour">0:</p>
+            <p id="minute">0:</p>
+            <p id="second">0</p>
+
+            <input type="text" id="setHour" placeholder="Set Hour (#)">
+            <button id="set-Hour" onclick = "setHour()">Set Hour</button>
+
+            <input type="text" id="setMin" placeholder="Set Min (#)">
+            <button id="set-Min" onclick = "setMin()">Set Min</button>
+                
+            <input type="text" id="setSec" placeholder="Set Sec (#)">
+            <button id="set-Sec" onclick = "setSec()">Set Sec</button>
+        </div>
+    </div>
+
+    <div class ="alarm">
+        <h1>Alarm</h1>
+        <div class="set-alarm">
+            <h2>
+                Set Alarm:
+            </h2>
+            <p id="alarmHour">7:</p>
+            <button id="add-hour" onclick="addHour()">+1</button>
+            <button id="subtract-hour" onclick = "subtractHour()">-1</button>
+            
+
+            <p id="alarmMin">30</p>
+            <button id="add-minute" onclick = "addMin()">+1</button>
+            <button id="subtract-minute" onclick = "subtractMin()">-1</button>
+            <button onclick="stopAlarm()">Stop Alarm</button>
+            <button onclick="snoozeAlarm()">Snooze</button>
+
+        </div>
+            
+    </div>
+
+    <div class ="stopwatch">
+        <h1>Stopwatch</h1>
+        <div class="time">
+            <h2>
+                Time:
+            </h2>
+            <p id="hour-stopwatch">0:</p>
+            <p id="minute-stopwatch">0:</p>
+            <p id="second-stopwatch">0.</p>
+            <p id="milisec">0</p>
+
+            <button onclick="startStopwatch()">Start</button>
+            <button onclick="stopStopwatch()">Stop</button>
+            <button onclick="resetStopwatch()">Reset</button>
+        </div>
+    </div>
+</body>
+
+</html>

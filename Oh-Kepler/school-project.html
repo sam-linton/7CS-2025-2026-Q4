@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stickman Fighter</title>
+    <style>
+        body {
+            margin: 0;
+            background: #1a1a1a;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: 'Courier New', Courier, monospace;
+            color: white;
+            overflow: hidden;
+        }
+        #ui {
+            display: flex;
+            justify-content: space-between;
+            width: 800px;
+            margin-bottom: 10px;
+        }
+        .health-bar-container {
+            width: 300px;
+            height: 20px;
+            background: #444;
+            border: 2px solid #fff;
+        }
+        .health-bar {
+            height: 100%;
+            width: 100%;
+            transition: width 0.1s ease;
+        }
+        #p1Health { background: #0077ff; }
+        #p2Health { background: #ff3333; }
+        canvas {
+            background: #222;
+            border: 4px solid #fff;
+            box-shadow: 0 0 20px rgba(255,255,255,0.1);
+        }
+        #controls-hint {
+            margin-top: 15px;
+            display: flex;
+            justify-content: space-between;
+            width: 800px;
+            font-size: 14px;
+            color: #aaa;
+        }
+        #winnerScreen {
+            position: absolute;
+            background: rgba(0,0,0,0.85);
+            width: 800px;
+            height: 400px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border: 4px solid #fff;
+            display: none;
+            top: 0;
+            left: 0;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 18px;
+            background: #fff;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+            margin-top: 15px;
+        }
+        button:hover { background: #ccc; }
+    </style>
+</head>
+<body>
+
+<div id="ui">
+    <div>
+        <div>Player 1 (Blue)</div>
+        <div class="health-bar-container"><div id="p1Health" class="health-bar"></div></div>
+    </div>
+    <div style="font-size: 24px; font-weight: bold; align-self: center;">VS</div>
+    <div>
+        <div style="text-align: right;">Player 2 (Red)</div>
+        <div class="health-bar-container"><div id="p2Health" class="health-bar"></div></div>
+    </div>
+</div>
+
+<div style="position: relative;">
+    <canvas id="gameCanvas" width="800" height="400"></canvas>
+    <div id="winnerScreen">
+        <h1 id="winnerText">PLAYER 1 WINS!</h1>
+        <button onclick="resetGame()">REMATCH</button>
+    </div>
+</div>
+
+<div id="controls-hint">
+    <div><strong>P1:</strong> A/D = Move, W = Jump, S = Punch</div>
+    <div><strong>P2:</strong> J/L = Move, I = Jump, K = Punch</div>
+</div>
+
+<script>
+const canvas = document.getElementById('gameCanvas');
+const ctx = canvas.getContext('2d');
+
+const p1HealthBar = document.getElementById('p1Health');
+const p2HealthBar = document.getElementById('p2Health');
+const winnerScreen = document.getElementById('winnerScreen');
+const winnerText = document.getElementById('winnerText');
+
+const GRAVITY = 0.6;
+const GROUND_Y = 350;
+
+const keys = {};
+window.addEventListener('keydown', e => {
+    const keyLower = e.key.toLowerCase();
+    keys[keyLower] = true;
+    
+    if (["w", "s", "i", "k", " "].includes(keyLower)) {
+        e.preventDefault();
+    }
+});
+window.addEventListener('keyup', e => {
+    keys[e.key.toLowerCase()] = false;
+});
+
+class Stickman {
+    constructor(x, color, controls, facing) {
+        this.x = x;
+        this.y = GROUND_Y;
+        this.vx = 0;
+        this.vy = 0;
+        this.color = color;
+        this.controls = controls;
+        this.facing = facing; // 1 = right, -1 = left
+        
+        this.health = 100;
+        this.isGrounded = true;
+        this.isPunching = false;
+        this.punchTimer = 0;
+        this.hasHitThisPunch = false; // Prevents multi-hit calculations inside 1 frame
+        this.width = 40;
+        this.height = 80;
+        this.hitStunTimer = 0; // Allows players to actually get knocked back
+    }
+
+    update(opponent) {
+        // Decrease hit stun
+        if (this.hitStunTimer > 0) {
+            this.hitStunTimer--;
+        }
+
+        // Movement (Only allowed if not reeling from a hit)
+        if (this.hitStunTimer === 0) {
+            if (keys[this.controls.left]) {
+                this.vx = -5;
+                this.facing = -1;
+            } else if (keys[this.controls.right]) {
+                this.vx = 5;
+                this.facing = 1;
+            } else {
+                this.vx *= 0.8; // Apply standard friction
+            }
+
+            // Jump
+            if (keys[this.controls.jump] && this.isGrounded) {
+                this.vy = -12;
+                this.isGrounded = false;
+            }
+        } else {
+            // Apply slight air friction during knockback stun
+            this.vx *= 0.95;
+        }
+
+        // Apply Physics
+        this.vy += GRAVITY;
+        this.x += this.vx;
+        this.y += this.vy;
+
+        // Ground collision
+        if (this.y >= GROUND_Y) {
+            this.y = GROUND_Y;
+            this.vy = 0;
+            this.isGrounded = true;
+        }
+
+        // Boundary limits
+        if (this.x < 20) this.x = 20;
+        if (this.x > canvas.width - 20) this.x = canvas.width - 20;
+
+        // Punch mechanic
+        if (keys[this.controls.punch] && !this.isPunching && this.hitStunTimer === 0) {
+            this.isPunching = true;
+            this.punchTimer = 10;
+            this.hasHitThisPunch = false;
+        }
+
+        if (this.isPunching) {
+            this.punchTimer--;
+            // Check for hit windows dynamically mid-punch frame
+            if (!this.hasHitThisPunch) {
+                this.checkHit(opponent);
+            }
+            if (this.punchTimer <= 0) {
+                this.isPunching = false;
+            }
+        }
+    }
+
+    checkHit(opponent) {
+        const punchReach = 40;
+        // Calculate point of the extended fist
+        const punchX = this.x + (this.facing * punchReach);
+        const shoulderY = (this.y - this.height + 12) + 8; // Mirrors drawing logic
+
+        // Accurate bounding box check relative to opponent width (40px total, so 20px left/right)
+        const horizontalHit = (punchX >= opponent.x - 20) && (punchX <= opponent.x + 20);
+        
+        // Vertical check comparing overall height profile
+        const verticalHit = (shoulderY >= opponent.y - opponent.height) && (shoulderY <= opponent.y);
+
+        if (horizontalHit && verticalHit) {
+            opponent.takeDamage(10, this.facing);
+            this.hasHitThisPunch = true; // Flag to prevent dealing damage on consecutive animation frames
+        }
+    }
+
+    takeDamage(amount, direction) {
+        this.health -= amount;
+        if (this.health < 0) this.health = 0;
+        
+        // Push away and upward slightly
+        this.vx = direction * 10;
+        this.vy = -5; 
+        this.isGrounded = false;
+        this.hitStunTimer = 15; // Freeze movement inputs for 15 frames
+    }
+
+    draw() {
+        ctx.strokeStyle = this.color;
+        ctx.lineWidth = 4;
+        ctx.lineCap = 'round';
+
+        const headRadius = 12;
+        const torsoLength = 30;
+        const headY = this.y - this.height + headRadius;
+        
+        // 1. Head
+        ctx.beginPath();
+        ctx.arc(this.x, headY, headRadius, 0, Math.PI * 2);
+        ctx.stroke();
+
+        // 2. Torso
+        const pelvisY = headY + headRadius + torsoLength;
+        ctx.beginPath();
+        ctx.moveTo(this.x, headY + headRadius);
+        ctx.lineTo(this.x, pelvisY);
+        ctx.stroke();
+
+        // 3. Legs
+        ctx.beginPath();
+        ctx.moveTo(this.x, pelvisY);
+        ctx.lineTo(this.x - 15, this.y);
+        ctx.moveTo(this.x, pelvisY);
+        ctx.lineTo(this.x + 15, this.y);
+        ctx.stroke();
+
+        // 4. Arms
+        const shoulderY = headY + headRadius + 8;
+        ctx.beginPath();
+        if (this.isPunching) {
+            ctx.moveTo(this.x, shoulderY);
+            ctx.lineTo(this.x + (this.facing * 35), shoulderY);
+            ctx.moveTo(this.x, shoulderY);
+            ctx.lineTo(this.x - (this.facing * 10), shoulderY + 20);
+        } else {
+            ctx.moveTo(this.x, shoulderY);
+            ctx.lineTo(this.x - 12, shoulderY + 20);
+            ctx.moveTo(this.x, shoulderY);
+            ctx.lineTo(this.x + 12, shoulderY + 20);
+        }
+        ctx.stroke();
+    }
+}
+
+let p1 = new Stickman(200, '#0077ff', { left: 'a', right: 'd', jump: 'w', punch: 's' }, 1);
+let p2 = new Stickman(600, '#ff3333', { left: 'j', right: 'l', jump: 'i', punch: 'k' }, -1);
+
+let gameOver = false;
+
+function gameLoop() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    // Ground line
+    ctx.strokeStyle = '#fff';
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+    ctx.moveTo(0, GROUND_Y);
+    ctx.lineTo(canvas.width, GROUND_Y);
+    ctx.stroke();
+
+    if (!gameOver) {
+        p1.update(p2);
+        p2.update(p1);
+
+        p1HealthBar.style.width = p1.health + '%';
+        p2HealthBar.style.width = p2.health + '%';
+
+        if (p1.health <= 0 || p2.health <= 0) {
+            gameOver = true;
+            winnerScreen.style.display = 'flex';
+            if (p1.health <= 0 && p2.health <= 0) {
+                winnerText.textContent = "TIE GAME!";
+            } else if (p1.health <= 0) {
+                winnerText.textContent = "PLAYER 2 (RED) WINS!";
+            } else {
+                winnerText.textContent = "PLAYER 1 (BLUE) WINS!";
+            }
+        }
+    }
+
+    p1.draw();
+    p2.draw();
+
+    requestAnimationFrame(gameLoop);
+}
+
+function resetGame() {
+    p1 = new Stickman(200, '#0077ff', { left: 'a', right: 'd', jump: 'w', punch: 's' }, 1);
+    p2 = new Stickman(600, '#ff3333', { left: 'j', right: 'l', jump: 'i', punch: 'k' }, -1);
+    
+    p1HealthBar.style.width = '100%';
+    p2HealthBar.style.width = '100%';
+    winnerScreen.style.display = 'none';
+    gameOver = false;
+}
+
+gameLoop();
+</script>
+
+</body>
+</html>

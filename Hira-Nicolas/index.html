@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="style.css">
+<title>Cool Quiz</title>
+<style>
+/* This hides both the check and the X by default */
+.checkmark, .xmark, .questionmark {
+    display: none;
+    margin-left: 5px;
+}
+.checkmark { color: green; }
+.xmark { color: red; }
+.questionmark { color: orange; }
+
+/* Styling for our full screens */
+.screen {
+    max-width: 500px;
+    margin: 40px auto;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    font-family: Arial, sans-serif;
+}
+
+button {
+    cursor: pointer;
+    padding: 6px 12px;
+    margin: 4px 2px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    background-color: #f8f9fa;
+}
+
+button:hover {
+    background-color: #e2e6ea;
+}
+</style>
+</head>
+<body>
+
+<!-- SCREEN 1: THE QUIZ -->
+<div id="quiz-screen" class="screen" style="display: block;">
+    <h1>Cool Quiz</h1>
+
+    <p>Question 1: How old are you?</p>
+    <input type="text" placeholder="Enter age here..." style="padding: 6px; width: 80%;">
+
+    <p>Question 2: Are you real?</p>
+    <button onclick="toggleMark('check1')"> 
+        Press to Verify Humanism <span id="check1" class="checkmark">✓</span> 
+    </button>
+
+    <p>Question 3: Are you happy?</p>
+    <button onclick="toggleMark('check2', 'check3')"> 
+        Yes <span id="check2" class="checkmark">✓</span> 
+    </button>
+    <button onclick="toggleMark('check3', 'check2')"> 
+        No <span id="check3" class="xmark">✗</span> 
+    </button>
+
+    <p>Question 4: Do you like hamsters?</p>
+    <button onclick="toggleMark('check4', 'check5')"> 
+        Yes <span id="check4" class="checkmark">✓</span> 
+    </button>
+    <button onclick="toggleMark('check5', 'check4')"> 
+        No <span id="check5" class="xmark">✗</span> 
+    </button>
+
+    <p>Question 5: Is Bob friendly?</p>
+    <button onclick="toggleMark('check7', 'check8', 'check6')"> 
+        Yes <span id="check7" class="checkmark">✓</span> 
+    </button>
+    <button onclick="toggleMark('check6', 'check7', 'check8')"> 
+        Maybe <span id="check6" class="questionmark">?</span> 
+    </button>
+    <button onclick="toggleMark('check8', 'check7', 'check6')"> 
+        No <span id="check8" class="xmark">✗</span> 
+    </button>
+
+    <div style="margin-top: 30px;">
+        <button onclick="goToConclusionScreen()" style="width: 100%; padding: 10px; font-weight: bold; background-color: #007bff; color: white; border: none;">Finish Quiz</button>
+    </div>
+</div>
+
+<!--THE CONCLUSION (Hidden by default) -->
+<div id="conclusion-screen" class="screen" style="display: none; background-color: #f4f4f9; text-align: center;">
+    <h1>Quiz Complete!</h1>
+    <p id="conclusion-text"></p>
+    
+    <div id="status-badge" style="display: inline-block; padding: 5px 15px; border-radius: 20px; color: white; font-weight: bold; margin-bottom: 20px;"></div>
+    
+    <div style="display: flex; gap: 10px; justify-content: center;">
+        
+        <button onclick="goToQuizScreen()" style="background-color: #6c757d; color: white; border: none; padding: 10px 15px; border-radius: 4px;">Try Again</button>
+    </div>
+</div>
+
+<script>
+// Handles selection behavior for quiz markers
+function toggleMark(showId, hideId1, hideId2) {
+    document.getElementById(showId).style.display = "inline"; 
+    if (hideId1) document.getElementById(hideId1).style.display = "none";
+    if (hideId2) document.getElementById(hideId2).style.display = "none";
+}
+
+// Processes answers and switches to the results view
+function goToConclusionScreen() {
+    const isHuman = document.getElementById('check1').style.display === "inline";
+    const badge = document.getElementById('status-badge');
+    const conclusionText = document.getElementById('conclusion-text');
+
+    if (!isHuman) {
+        // Robot override rule
+        conclusionText.innerText = "Access Denied. Our systems detect that you are an unauthorized AI or machine.";
+        badge.innerText = "DETECTED ROBOT";
+        badge.style.backgroundColor = "#721c24";
+    } else {
+        // Collect text values
+        const ageInput = document.querySelector('input[placeholder="Enter age here..."]').value;
+        const ageText = ageInput ? ageInput : "an unknown age";
+
+        // Parse Bob response
+        let bobStatus = "Undecided";
+        let badgeColor = "#6c757d";
+
+        if (document.getElementById('check7').style.display === "inline") {
+            bobStatus = "Team Bob (Friendly)";
+            badgeColor = "#28a745";
+        } else if (document.getElementById('check6').style.display === "inline") {
+            bobStatus = "Bob Skeptic (Maybe)";
+            badgeColor = "#ffc107";
+        } else if (document.getElementById('check8').style.display === "inline") {
+            bobStatus = "Anti-Bob (Unfriendly)";
+            badgeColor = "#dc3545";
+        }
+
+        // Parse Hamster response
+        let hamsterOpinion = "have neutral feelings toward hamsters";
+        if (document.getElementById('check4').style.display === "inline") {
+            hamsterOpinion = "are a certified hamster lover";
+        } else if (document.getElementById('check5').style.display === "inline") {
+            hamsterOpinion = "are not a fan of small rodents";
+        }
+
+        // Output customized summary text
+        conclusionText.innerText = `You are ${ageText} years old. Professionally, you ${hamsterOpinion} and finalized your submission.`;
+        badge.innerText = bobStatus;
+        badge.style.backgroundColor = badgeColor;
+    }
+
+    // Toggle screen visibility
+    document.getElementById('quiz-screen').style.display = "none";
+    document.getElementById('conclusion-screen').style.display = "block";
+}
+
+// Clears all choices and inputs to restart the quiz
+function goToQuizScreen() {
+    document.querySelector('input[placeholder="Enter age here..."]').value = "";
+    
+    const marks = document.querySelectorAll('.checkmark, .xmark, .questionmark');
+    marks.forEach(mark => mark.style.display = "none");
+    
+    document.getElementById('conclusion-screen').style.display = "none";
+    document.getElementById('quiz-screen').style.display = "block";
+}
+
+
+</script>
+</body>
+</html>

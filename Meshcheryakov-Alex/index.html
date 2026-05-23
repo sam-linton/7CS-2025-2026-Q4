@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Facebook Marketplace</title>
+ <link rel="stylesheet" href="style.css">
+</head>
+<body class="dark-mode">
+<div class="page">
+ <header>
+   <div>
+     <h1>Marketplace</h1>
+     <p class="subtitle">Buy and sell locally</p>
+   </div>
+   <button class="dark-mode-toggle" id="darkModeToggle">Light Mode</button>
+ </header>
+ <div class="market-board">
+   <div class="panel">
+     <h2>Create a New Listing</h2>
+     <form id="listingForm">
+       <div class="form-group">
+         <label for="itemName">Item name</label>
+         <input id="itemName" name="itemName" type="text" placeholder="Listed Item" required>
+       </div>
+       <div class="form-group">
+         <label for="category">Category</label>
+         <select id="category" name="category" required>
+           <option value="">Select category</option>
+           <option>Electronics</option>
+           <option>Vehicles</option>
+           <option>Home & Garden</option>
+           <option>Clothing & Accessories</option>
+           <option>Sports & Hobbies</option>
+           <option>Books & Media</option>
+           <option>Collectibles</option>
+           <option>Tools and Equipment</option>
+         </select>
+       </div>
+       <div class="form-group">
+         <label for="description">Description</label>
+         <textarea id="description" name="description" placeholder="Describe your item" required></textarea>
+       </div>
+       <div class="form-group">
+         <label for="price">Price ($)</label>
+         <input id="price" name="price" type="number" min="1" max="1000000000000000000" step="1" value="100" required>
+       </div>
+       <button type="submit">Post Listing</button>
+     </form>
+   </div>
+   <div class="listings">
+     <h2>Current Listings</h2>
+     <div class="listing-count" id="listingCount">No listings yet.</div>
+     <div class="listing-grid" id="listingGrid">
+       <div class="no-items">No listings available. Add one using the form.</div>
+     </div>
+   </div>
+ </div>
+ <div class="footer">Facebook Marketplace: Buy and sell items locally.</div>
+</div>
+<script src="script.js"></script>
+</body>
+</html>

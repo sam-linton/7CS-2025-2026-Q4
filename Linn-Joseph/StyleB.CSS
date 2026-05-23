@@ -1,0 +1,28 @@
+.Head{
+    background-color: coral;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    a{
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+}
+}
+.Body{
+    background-color:coral;
+    color: black;
+    text-align: center;
+    padding: 10px;
+    a{
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+}
+}
+.back{
+  /* A 45-degree gradient from blue to pink */
+  background: linear-gradient(45deg, coral, #6c1ee9);
+  height: 200px;
+}
+    

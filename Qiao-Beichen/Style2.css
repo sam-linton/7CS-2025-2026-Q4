@@ -1,0 +1,29 @@
+.main {
+    margin: 1rem;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+h1 {
+    text-align: center;
+    background-color: cornsilk;
+    padding: 0.5rem;
+}
+
+button {
+    width: 48%;
+    padding: 0.25rem;
+    border-color: goldenrod;
+    background-color:antiquewhite;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 1rem;
+    font-style: bold;
+
+    &:hover {
+        cursor:pointer;
+        background-color: rgb(221, 207, 188);
+    }
+}
+
+a {
+    font-size: 1.1rem;
+}

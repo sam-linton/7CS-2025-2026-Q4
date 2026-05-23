@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <title>Wordle Game</title>
+   <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<body>
+  <div>
+  <div class="navbar">
+      <a href="#" onclick="showInstructions()">Instructions</a>
+      <a href="#" onclick="resetGame()">Reset Game</a>
+      <a href="#" onclick="cheat()">Cheat</a>
+      <a href="#" onclick="hint()">Hint</a>
+  </div>
+  <div class="score-board">
+   Score: <span id="win-count-display">0</span>
+   </div>
+
+
+   <h1>Wordle Game</h1>
+   <div id="board">
+       <div class="row">
+           <div id="box0" class="box"></div>
+           <div id="box1" class="box"></div>
+           <div id="box2" class="box"></div>
+           <div id="box3" class="box"></div>
+           <div id="box4" class="box"></div>
+       </div>
+
+
+       <div class="row">
+           <div id="box5" class="box"></div>
+           <div id="box6" class="box"></div>
+           <div id="box7" class="box"></div>
+           <div id="box8" class="box"></div>
+           <div id="box9" class="box"></div>
+       </div>
+
+
+       <div class="row">
+           <div id="box10" class="box"></div>
+           <div id="box11" class="box"></div>
+           <div id="box12" class="box"></div>
+           <div id="box13" class="box"></div>
+           <div id="box14" class="box"></div>
+       </div>
+
+
+       <div class="row">
+           <div id="box15" class="box"></div>
+           <div id="box16" class="box"></div>
+           <div id="box17" class="box"></div>
+           <div id="box18" class="box"></div>
+           <div id="box19" class="box"></div>
+       </div>
+
+
+       <div class="row">
+           <div id="box20" class="box"></div>
+           <div id="box21" class="box"></div>
+           <div id="box22" class="box"></div>
+           <div id="box23" class="box"></div>
+           <div id="box24" class="box"></div>
+       </div>
+
+
+       <div class="row">
+           <div id="box25" class="box"></div>
+           <div id="box26" class="box"></div>
+           <div id="box27" class="box"></div>
+           <div id="box28" class="box"></div>
+           <div id="box29" class="box"></div>
+       </div>
+   </div>
+  
+   <div class="keyboard">
+       <button onclick="deletePressed()">DELETE</button>
+       <button id="key-Q" onclick="buttonPressed('Q')">Q</button>
+       <button id="key-W" onclick="buttonPressed('W')">W</button>
+       <button id="key-E" onclick="buttonPressed('E')">E</button>
+       <button id="key-R" onclick="buttonPressed('R')">R</button>
+       <button id="key-T" onclick="buttonPressed('T')">T</button>
+       <button id="key-Y" onclick="buttonPressed('Y')">Y</button>
+       <button id="key-U" onclick="buttonPressed('U')">U</button>
+       <button id="key-I" onclick="buttonPressed('I')">I</button>
+       <button id="key-O" onclick="buttonPressed('O')">O</button>
+       <button id="key-P" onclick="buttonPressed('P')">P</button>
+       <button id="key-A" onclick="buttonPressed('A')">A</button>
+       <button id="key-S" onclick="buttonPressed('S')">S</button>
+       <button id="key-D" onclick="buttonPressed('D')">D</button>
+       <button id="key-F" onclick="buttonPressed('F')">F</button>
+       <button id="key-G" onclick="buttonPressed('G')">G</button>
+       <button id="key-H" onclick="buttonPressed('H')">H</button>
+       <button id="key-J" onclick="buttonPressed('J')">J</button>
+       <button id="key-K" onclick="buttonPressed('K')">K</button>
+       <button id="key-L" onclick="buttonPressed('L')">L</button>
+       <button id="key-Z" onclick="buttonPressed('Z')">Z</button>
+       <button id="key-X" onclick="buttonPressed('X')">X</button>
+       <button id="key-C" onclick="buttonPressed('C')">C</button>
+       <button id="key-V" onclick="buttonPressed('V')">V</button>
+       <button id="key-B" onclick="buttonPressed('B')">B</button>
+       <button id="key-N" onclick="buttonPressed('N')">N</button>
+       <button id="key-M" onclick="buttonPressed('M')">M</button>
+       <button onclick="checkGuess('GUESS')">GUESS</button>
+   </div>
+   <div id="win-screen">
+       <div class="win-content">
+           <h1>YOU WIN! 🎉</h1>
+           <p>You guessed the word!</p>
+           <a href="#" class="play-again-btn" onclick="resetGame()">PLAY AGAIN</a>
+       </div>
+   </div>
+
+
+   <div id="lose-screen">
+       <div class="lose-content">
+           <h1>YOU LOSE! 😢</h1>
+           <p>The word was: <span id="secret-word"></span></p>
+           <a href="#" class="play-again-btn" onclick="resetGame()">PLAY AGAIN</a>
+       </div>
+   </div>
+
+
+   <script src="script.js"></script>
+</body>
+</html>
+
+
+

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PSA Announcement Board</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="hero">
+    <div>
+      <h1>PSA Announcement Board</h1>
+      <p>Publish public service announcements instantly for your community.</p>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="card form-card">
+      <h2>Post a new PSA</h2>
+      <form id="psa-form">
+        <label for="title">Title</label>
+        <input id="title" name="title" type="text" placeholder="Safety alert, event, reminder..." required>
+
+        <label for="message">Message</label>
+        <textarea id="message" name="message" rows="4" placeholder="Type your PSA here..." required></textarea>
+
+        <button type="submit">Publish PSA</button>
+      </form>
+    </section>
+
+    <section class="card board-card">
+      <div class="board-header">
+        <h2>Latest PSAs</h2>
+        <button id="clear-all" type="button">Clear All</button>
+      </div>
+      <div id="board" class="board"></div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
+

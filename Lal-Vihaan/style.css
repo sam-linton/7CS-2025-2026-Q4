@@ -1,0 +1,37 @@
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  margin-top: 100px;
+  background-color: #1e293b;
+  color: white;
+}
+
+.card {
+  background-color: #111827;
+  padding: 20px;
+  width: 300px;
+  margin: auto;
+  border-radius: 10px;
+}
+
+input {
+  padding: 8px;
+  width: 80%;
+  margin-top: 10px;
+}
+
+button {
+  padding: 8px 12px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+#result {
+  margin-top: 15px;
+  font-weight: bold;
+}
+
+#attempts {
+  margin-top: 5px;
+  color: lightgray;
+}

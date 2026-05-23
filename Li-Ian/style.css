@@ -1,0 +1,46 @@
+.offside-regular {
+  font-family: "Offside", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+button{
+  width:3.5rem;
+  background-color:lightgray;
+  text-align: center;
+}
+
+input{
+  width:7rem;
+}
+
+#setMonth, #setDay, #setYear {
+  width:5rem;
+}
+
+#set-alarm{
+  font-family:'Courier New', Courier, monospace;
+  width:5rem;
+  background-color: orange;
+}
+
+.alarm,.stopwatch,.clock{
+  margin:2rem;
+  font-family:monospace;
+  padding:0.5rem;
+  text-align: center;
+  background-color:orange;
+}
+
+.date, .time,.set-alarm,.ring{
+    margin:0.5rem;
+    padding: 1rem;
+    color: lightgray;
+    background-color:darkslategray;
+    font-family: "Offside", sans-serif;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    font-family:"Offside",sans-serif;
+}
+

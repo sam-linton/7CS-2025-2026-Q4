@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Facebook Marketplace</title>
+ <link rel="stylesheet" href="style.css">
+</head>
+<body class="dark-mode">
+<div class="page">
+ <header>
+   <div>
+     <h1>Marketplace</h1>
+     <p class="subtitle">Buy and sell locally</p>
+   </div>
+   <button class="dark-mode-toggle" id="darkModeToggle">Light Mode</button>
+ </header>
+ <div class="market-board">
+   <div class="panel">
+     <h2>Create a New Listing</h2>
+     <form id="listingForm">
+       <div class="form-group">
+         <label for="itemName">Item name</label>
+         <input id="itemName" name="itemName" type="text" placeholder="Listed Item" required>
+       </div>
+       <div class="form-group">
+         <label for="category">Category</label>
+         <select id="category" name="category" required>
+           <option value="">Select category</option>
+           <option>Electronics</option>
+           <option>Vehicles</option>
+           <option>Home & Garden</option>
+           <option>Clothing & Accessories</option>
+           <option>Sports & Hobbies</option>
+           <option>Books & Media</option>
+           <option>Collectibles</option>
+           <option>Tools and Equipment</option>
+         </select>
+       </div>
+       <div class="form-group">
+         <label for="description">Description</label>
+         <textarea id="description" name="description" placeholder="Describe your item" required></textarea>
+       </div>
+       <div class="form-group">
+         <label for="price">Price ($)</label>
+         <input id="price" name="price" type="number" min="1" max="1000000000000000000" step="1" value="100" required>
+       </div>
+       <button type="submit">Post Listing</button>
+     </form>
+   </div>
+   <div class="listings">
+     <h2>Current Listings</h2>
+     <div class="listing-count" id="listingCount">No listings yet.</div>
+     <div class="listing-grid" id="listingGrid">
+       <div class="no-items">No listings available. Add one using the form.</div>
+     </div>
+   </div>
+ </div>
+ <div class="footer">Facebook Marketplace: Buy and sell items locally.</div>
+</div>
+<script src="script.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+css:
+
+:root {
+  --bg-color: #f0f2f5;
+  --text-color: #1c1e21;
+  --card-bg: #ffffff;
+  --border-color: #dadde1;
+  --accent-color: #1877f2;
+  --button-bg: #1877f2;
+  --button-hover: #166fe5;
+  --input-bg: #f5f6f7;
+  --input-border: #ccd0d5;
+  --shadow: rgba(0, 0, 0, 0.1);
+}
+
+body.dark-mode {
+  --bg-color: #18191a;
+  --text-color: #e4e6ea;
+  --card-bg: #242526;
+  --border-color: #3a3b3c;
+  --accent-color: #4267b2;
+  --button-bg: #4267b2;
+  --button-hover: #365899;
+  --input-bg: #3a3b3c;
+  --input-border: #555555;
+  --shadow: rgba(0, 0, 0, 0.3);
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--bg-color);
+  color: var(--text-color);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+}
+
+.page {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 30px 20px 40px;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+h1 {
+  margin: 0;
+  font-size: 2.5rem;
+  color: var(--accent-color);
+}
+
+.dark-mode-toggle {
+  background: var(--button-bg);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1rem;
+
+}
+
+.dark-mode-toggle:hover {
+  background: var(--button-hover);
+}
+
+p.subtitle {
+  margin: 10px 0 0;
+  color: #65676b;
+}
+
+.market-board {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 24px;
+}
+
+.panel,
+.listings {
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  box-shadow: 0 1px 2px var(--shadow);
+  padding: 22px;
+}
+
+.panel h2,
+.listings h2 {
+  margin-top: 0;
+  color: var(--text-color);
+}
+
+.form-group {
+  display: grid;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+label {
+  font-size: 0.95rem;
+  color: var(--text-color);
+}
+
+input[type="text"],
+textarea,
+select,
+input[type="number"] {
+  width: 100%;
+  padding: 12px 14px;
+  background: var(--input-bg);
+  border: 1px solid var(--input-border);
+  border-radius: 6px;
+  color: var(--text-color);
+  font-size: 1rem;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+button[type="submit"] {
+  width: 100%;
+  padding: 14px 16px;
+  background: var(--button-bg);
+  border: none;
+  border-radius: 6px;
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+button[type="submit"]:hover {
+  background: var(--button-hover);
+}
+
+.listing-count {
+  margin: 18px 0 12px;
+  color: #65676b;
+}
+
+.listing-grid {
+  display: grid;
+  gap: 16px;
+}
+
+.listing-item {
+  padding: 16px;
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  box-shadow: 0 1px 2px var(--shadow);
+}
+
+.listing-item h3 {
+  margin: 0 0 8px;
+  color: var(--text-color);
+}
+
+.listing-item p {
+  margin: 0 0 10px;
+  color: #65676b;
+  line-height: 1.5;
+}
+
+.listing-price {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--accent-color);
+  font-weight: 700;
+}
+
+.no-items {
+  color: #65676b;
+  font-size: 0.95rem;
+}
+
+.footer {
+  margin-top: 28px;
+  text-align: center;
+  color: #65676b;
+  font-size: 0.95rem;
+}
+
+@media (max-width: 760px) {
+  .market-board {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+
+
+
+script.js:
+
+
+const form = document.getElementById('listingForm');
+const listingGrid = document.getElementById('listingGrid');
+const listingCount = document.getElementById('listingCount');
+const darkModeToggle = document.getElementById('darkModeToggle');
+let listings = [];
+
+// Dark mode toggle
+darkModeToggle.addEventListener('click', () => {
+  document.body.classList.toggle('dark-mode');
+  darkModeToggle.textContent = document.body.classList.contains('dark-mode') ? 'Light Mode' : 'Dark Mode';
+});
+
+function renderListings() {
+  listingGrid.innerHTML = '';
+  if (listings.length === 0) {
+    listingGrid.innerHTML = '<div class="no-items">No listings available. Add one using the form.</div>';
+    listingCount.textContent = 'No listings yet.';
+    return;
+  }
+
+  listingCount.textContent = `${listings.length} listing${listings.length === 1 ? '' : 's'} active`;
+  listings.forEach(listing => {
+    const item = document.createElement('article');
+    item.className = 'listing-item';
+    item.innerHTML = `
+      <h3>${listing.name}</h3>
+      <p>${listing.description}</p>
+      <div class="listing-price">$${listing.price.toLocaleString()}</div>
+      <p style="margin-top: 12px; color: #65676b; font-size: 0.92rem;">Category: ${listing.category}</p>
+    `;
+    listingGrid.appendChild(item);
+  });
+}
+
+form.addEventListener('submit', event => {
+  event.preventDefault();
+  const name = form.itemName.value.trim();
+  const category = form.category.value;
+  const description = form.description.value.trim();
+  const price = Number(form.price.value);
+
+  if (!name || !category || !description || Number.isNaN(price) || price < 1 || price > 1000000) {
+    return;
+  }
+
+  listings.unshift({ name, category, description, price });
+  form.reset();
+  form.price.value = 100;
+  renderListings();
+});
+
+renderListings();
